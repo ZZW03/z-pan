@@ -20,7 +20,7 @@ package com.zzw.zpan.common.listenner.search;//package com.imooc.pan.server.comm
 //@Component
 //public class UserSearchEventListener {
 //
-//    @Autowired
+//    @Resource
 //    private IUserSearchHistoryService iUserSearchHistoryService;
 //
 //    /**

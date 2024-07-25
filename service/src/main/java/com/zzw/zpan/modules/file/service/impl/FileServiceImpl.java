@@ -54,10 +54,10 @@ public class FileServiceImpl extends ServiceImpl<RPanFileMapper, RPanFile> imple
     @Resource
     private StorageEngine storageEngine;
 
-    @Autowired
+    @Resource
     ApplicationContext context;
 
-    @Autowired
+    @Resource
     IFileChunkService iFileChunkService;
 
     @Override

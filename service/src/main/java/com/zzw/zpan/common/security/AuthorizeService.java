@@ -1,18 +1,18 @@
 package com.zzw.zpan.common.security;
 
-
 import com.zzw.zpan.modules.user.entity.RPanUser;
 import com.zzw.zpan.modules.user.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthorizeService implements UserDetailsService {
 
-    @Autowired
+    @Resource
     IUserService iUserService;
 
     @Override
@@ -34,4 +34,5 @@ public class AuthorizeService implements UserDetailsService {
                 .roles(accountByName.getUserRole())
                 .build();
     }
+
 }

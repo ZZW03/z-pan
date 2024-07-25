@@ -2,6 +2,7 @@ import com.zzw.zpan.RPanServerLauncher;
 import com.zzw.zpan.common.config.PanServerConfig;
 import com.zzw.zpan.common.utils.ShareTokenUtil;
 import com.zzw.zpan.constants.RPanConstants;
+//import com.zzw.zpan.lock.zookeeper.ZooKeeperLockProperties;
 import com.zzw.zpan.modules.file.context.QueryFileListContext;
 import com.zzw.zpan.modules.file.entity.RPanUserFile;
 import com.zzw.zpan.modules.file.enums.enums.DelFlagEnum;
@@ -39,11 +40,14 @@ public class RPanServerLauncherTest {
     @Resource
     RPanUserFileMapper rPanFileMapper;
 
-    @Autowired
-    private PanServerConfig config;
+    @Resource
+    PanServerConfig config;
 
     @Resource
     iShareService iShareService;
+
+//    @Resource
+//    ZooKeeperLockProperties zooKeeperLockProperties;
 
 
     @Test
@@ -120,6 +124,11 @@ public class RPanServerLauncherTest {
         RPanUserFileVO viewObject = rPanUserFile.asViewObject(RPanUserFileVO.class);
         System.out.println(viewObject.getFileType());
         System.out.println(viewObject.getFileId());
+    }
+
+    @Test
+    public void Test2(){
+//        System.out.println(zooKeeperLockProperties);
     }
 
 

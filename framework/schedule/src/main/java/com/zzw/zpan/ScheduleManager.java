@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledFuture;
 @Slf4j
 public class ScheduleManager {
 
-    @Autowired
+    @Resource
     private ThreadPoolTaskScheduler taskScheduler;
 
     /**

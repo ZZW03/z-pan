@@ -13,6 +13,7 @@ import com.zzw.zpan.modules.recycle.context.DeleteContext;
 import com.zzw.zpan.modules.recycle.context.QueryRecycleFileListContext;
 import com.zzw.zpan.modules.recycle.context.RestoreContext;
 import com.zzw.zpan.modules.recycle.service.IRecycleService;
+import jakarta.annotation.Resource;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,7 +30,7 @@ import java.util.stream.Collectors;
 @Service
 public class RecycleServiceImpl implements IRecycleService {
 
-    @Autowired
+    @Resource
     private IUserFileService iUserFileService;
 
 

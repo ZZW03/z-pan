@@ -15,6 +15,7 @@ import com.zzw.zpan.context.*;
 import com.zzw.zpan.exception.RPanFrameworkException;
 import com.zzw.zpan.utils.FileUtils;
 import com.zzw.zpan.utils.UUIDUtil;
+import jakarta.annotation.Resource;
 import lombok.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -51,10 +52,10 @@ public class OSSStorageEngine extends AbstractStorageEngine {
 
     private static final String PART_CRC_KEY = "partCRC";
 
-    @Autowired
+    @Resource
     private OssStorageEngineConfig config;
 
-    @Autowired
+    @Resource
     private OSSClient client;
 
     /**

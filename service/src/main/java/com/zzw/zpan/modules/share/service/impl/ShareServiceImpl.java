@@ -53,16 +53,16 @@ import java.util.stream.Collectors;
 @Service
 public class ShareServiceImpl extends ServiceImpl<RPanShareMapper, RPanShare> implements iShareService {
 
-    @Autowired
+    @Resource
     private PanServerConfig config;
 
-    @Autowired
+    @Resource
     private IShareFileService iShareFileService;
 
-    @Autowired
+    @Resource
     IUserFileService iUserFileService;
 
-    @Autowired
+    @Resource
     IUserService iUserService;
 
     private static final JWTSigner signer;

@@ -5,6 +5,7 @@ package com.zzw.zpan;
 import com.zzw.zpan.config.LocalStorageEngineConfig;
 import com.zzw.zpan.context.*;
 import com.zzw.zpan.utils.FileUtils;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @Component
 public class LocalStorageEngine extends AbstractStorageEngine {
 
-    @Autowired
+    @Resource
     private LocalStorageEngineConfig config;
 
     /**

@@ -5,6 +5,7 @@ import com.zzw.zpan.common.event.log.ErrorLogEvent;
 import com.zzw.zpan.modules.log.entity.RPanErrorLog;
 import com.zzw.zpan.modules.log.service.IErrorLogService;
 import com.zzw.zpan.utils.IdUtil;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
@@ -18,7 +19,7 @@ import java.util.Date;
 @Component
 public class ErrorLogEventListener {
 
-    @Autowired
+    @Resource
     private IErrorLogService iErrorLogService;
 
     /**

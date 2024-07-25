@@ -82,7 +82,11 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-
+<!--        <dependency>-->
+<!--            <groupId>com.zzw.zpan</groupId>-->
+<!--            <artifactId>lock-zookeeper</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
 
     </dependencies>

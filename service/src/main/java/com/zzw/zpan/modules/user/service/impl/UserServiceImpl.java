@@ -31,15 +31,12 @@ import java.util.Objects;
 @Service
 public class UserServiceImpl extends ServiceImpl<RPanUserMapper, RPanUser> implements IUserService {
 
+    @Resource
+    IUserFileService iUserFileService;
 
-
-    @Autowired
-    private IUserFileService iUserFileService;
 
     @Resource
     PasswordEncoder passwordEncoder;
-
-
 
     /**
      * 用户注册的业务实现

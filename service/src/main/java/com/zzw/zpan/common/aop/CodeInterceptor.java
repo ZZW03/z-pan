@@ -6,6 +6,7 @@ import com.zzw.zpan.common.utils.ShareIdUtil;
 import com.zzw.zpan.common.utils.ShareTokenUtil;
 import com.zzw.zpan.exception.RPanBusinessException;
 import com.zzw.zpan.modules.share.enums.ShareErrorCode;
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -19,10 +20,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CodeInterceptor {
 
-    @Autowired
+    @Resource
     private HttpServletRequest request;
-
-
 
     @Around("@annotation(needCode)")
     public Object doInterceptor(ProceedingJoinPoint joinPoint,
@@ -35,7 +34,6 @@ public class CodeInterceptor {
         }
         ShareIdUtil.set(ShareId);
         return joinPoint.proceed();
-
     }
 
 

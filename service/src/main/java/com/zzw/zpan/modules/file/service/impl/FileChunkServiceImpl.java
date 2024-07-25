@@ -15,6 +15,7 @@ import com.zzw.zpan.modules.file.enums.enums.MergeFlagEnum;
 import com.zzw.zpan.modules.file.mapper.RPanFileChunkMapper;
 import com.zzw.zpan.modules.file.service.IFileChunkService;
 import com.zzw.zpan.utils.IdUtil;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +30,11 @@ import java.util.Date;
 @Service
 public class FileChunkServiceImpl extends ServiceImpl<RPanFileChunkMapper, RPanFileChunk> implements IFileChunkService {
 
-    @Autowired
+    @Resource
     private PanServerConfig config;
 
 
-    @Autowired
+    @Resource
     private OSSStorageEngine storageEngine;
 
     /**

@@ -3,6 +3,7 @@ package com.zzw.zpan.config;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.zzw.zpan.constants.CacheConstants;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.Bean;
 @Slf4j
 public class CaffeineCacheConfig {
 
-    @Autowired
+    @Resource
     private CaffeineCacheProperties properties;
 
     @Bean

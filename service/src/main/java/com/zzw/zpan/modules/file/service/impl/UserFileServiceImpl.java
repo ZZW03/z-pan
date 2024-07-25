@@ -840,6 +840,7 @@ public class UserFileServiceImpl extends ServiceImpl<RPanUserFileMapper,RPanUser
            v.setId(o.getFileId());
         })).collect(Collectors.toList());
 
+
         //groupBy 就是用parentId 进行分组 把FolderTreeNodeVO存入进去
         Map<Long, List<FolderTreeNodeVO>> mappedFolderTreeNodeVOMap = mappedFolderTreeNodeVOList.stream().collect(Collectors.groupingBy(FolderTreeNodeVO::getParentId));
 

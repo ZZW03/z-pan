@@ -32,13 +32,13 @@ package com.zzw.zpan.common.listenner.file;//package com.imooc.pan.server.common
 //@Component
 //public class FilePhysicalDeleteEventListener implements ApplicationContextAware {
 //
-//    @Autowired
+//    @Resource
 //    private IFileService iFileService;
 //
-//    @Autowired
+//    @Resource
 //    private IUserFileService iUserFileService;
 //
-//    @Autowired
+//    @Resource
 //    private StorageEngine storageEngine;
 //
 //    private ApplicationContext applicationContext;

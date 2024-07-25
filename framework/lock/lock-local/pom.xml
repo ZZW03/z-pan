@@ -5,27 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.zzw.zpan</groupId>
-        <artifactId>z-pan</artifactId>
+        <artifactId>framework</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>framework</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>core</module>
-        <module>orm</module>
-        <module>web</module>
-        <module>schedule</module>
-        <module>cache</module>
-        <module>store-engine</module>
-        <module>bloom-filter</module>
-        <module>lock</module>
-        <module>lock/lock-core</module>
-        <module>lock/lock-local</module>
-        <module>lock/lock-redis</module>
-        <module>lock/lock-zookeeper</module>
-    </modules>
+    <artifactId>lock-local</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -33,5 +18,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.zzw.zpan</groupId>
+            <artifactId>lock-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

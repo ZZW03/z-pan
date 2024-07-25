@@ -17,7 +17,7 @@ import java.io.File;
 @Slf4j
 public class UploadFolderAndChunksFolderInitializer implements CommandLineRunner {
 
-    @Autowired
+    @Resource
     private LocalStorageEngineConfig config;
 
     @Override

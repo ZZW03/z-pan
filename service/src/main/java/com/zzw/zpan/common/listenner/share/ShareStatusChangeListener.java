@@ -22,10 +22,10 @@ package com.zzw.zpan.common.listenner.share;//package com.imooc.pan.server.commo
 //@Component
 //public class ShareStatusChangeListener {
 //
-//    @Autowired
+//    @Resource
 //    private IUserFileService iUserFileService;
 //
-//    @Autowired
+//    @Resource
 //    private IShareService iShareService;
 //
 //    /**

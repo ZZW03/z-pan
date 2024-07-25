@@ -3,6 +3,7 @@ package com.zzw.zpan.initializer;
 import com.aliyun.oss.OSSClient;
 import com.zzw.zpan.config.OssStorageEngineConfig;
 import com.zzw.zpan.exception.RPanFrameworkException;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,10 +17,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class OssBucketInitializer implements CommandLineRunner {
 
-    @Autowired
+    @Resource
     private OssStorageEngineConfig config;
 
-    @Autowired
+    @Resource
     private OSSClient client;
 
     @Override
