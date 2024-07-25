@@ -32,6 +32,9 @@
     <file url="file://$PROJECT_DIR$/framework/security/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/steam/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/steam/steam-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/steam/steam-rocketmq/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/store-engine/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/store-engine/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/store-engine/store-engine-core/src/main/java" charset="UTF-8" />

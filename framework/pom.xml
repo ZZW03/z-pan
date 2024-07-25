@@ -25,6 +25,9 @@
         <module>lock/lock-local</module>
         <module>lock/lock-redis</module>
         <module>lock/lock-zookeeper</module>
+        <module>steam</module>
+        <module>steam/steam-core</module>
+        <module>steam/steam-rocketmq</module>
     </modules>
 
     <properties>

@@ -2,6 +2,7 @@ package com.zzw.zpan.redis;
 
 
 import com.zzw.zpan.core.LockConstants;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,13 +20,6 @@ import org.springframework.integration.support.locks.LockRegistry;
 @Slf4j
 public class RedisLockConfig {
 
-    @Resource
-    RedisConnectionFactory redisConnectionFactory;
-
-    @Bean
-    public RedisConnectionFactory redisConnectionFactory(){
-        return  new LettuceConnectionFactory();
-    }
 
     @Bean
     public LockRegistry redisLockRegistry(RedisConnectionFactory redisConnectionFactory) {

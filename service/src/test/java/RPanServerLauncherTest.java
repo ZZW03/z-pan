@@ -3,6 +3,7 @@ import com.zzw.zpan.common.config.PanServerConfig;
 import com.zzw.zpan.common.utils.ShareTokenUtil;
 import com.zzw.zpan.constants.RPanConstants;
 //import com.zzw.zpan.lock.zookeeper.ZooKeeperLockProperties;
+import com.zzw.zpan.core.LockConstants;
 import com.zzw.zpan.modules.file.context.QueryFileListContext;
 import com.zzw.zpan.modules.file.entity.RPanUserFile;
 import com.zzw.zpan.modules.file.enums.enums.DelFlagEnum;
@@ -16,6 +17,7 @@ import com.zzw.zpan.modules.share.entity.RPanShare;
 import com.zzw.zpan.modules.share.service.iShareService;
 import com.zzw.zpan.modules.share.vo.RPanShareUrlListVO;
 import com.zzw.zpan.modules.share.vo.RPanShareUrlVO;
+import com.zzw.zpan.modules.test.controller.LockTester;
 import com.zzw.zpan.modules.user.context.UserRegisterContext;
 import com.zzw.zpan.modules.user.mapper.RPanUserMapper;
 import com.zzw.zpan.modules.user.service.IUserService;
@@ -23,10 +25,15 @@ import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.integration.support.locks.LockRegistry;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
 
 @SpringBootTest(classes = RPanServerLauncher.class)
 public class RPanServerLauncherTest {
@@ -45,6 +52,18 @@ public class RPanServerLauncherTest {
 
     @Resource
     iShareService iShareService;
+
+
+    @Autowired
+    private LockRegistry lockRegistry;
+
+    @Autowired
+    private LockTester lockTester;
+
+    @Autowired
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
+
 
 //    @Resource
 //    ZooKeeperLockProperties zooKeeperLockProperties;
@@ -127,8 +146,42 @@ public class RPanServerLauncherTest {
     }
 
     @Test
-    public void Test2(){
-//        System.out.println(zooKeeperLockProperties);
+    public void lockRegistryTest() throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(10);
+        for (int i = 0; i < 10; i++) {
+            threadPoolTaskExecutor.execute(() -> {
+                Lock lock = lockRegistry.obtain(LockConstants.R_PAN_LOCK);
+                boolean lockResult = false;
+                try {
+                    lockResult = lock.tryLock(60L, TimeUnit.SECONDS);
+                    if (lockResult) {
+                        System.out.println(Thread.currentThread().getName() + " get the lock.");
+                    }
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    if (lockResult) {
+                        System.out.println(Thread.currentThread().getName() + " release the lock.");
+                        lock.unlock();
+                    }
+                }
+                countDownLatch.countDown();
+            });
+        }
+        countDownLatch.await();
+    }
+
+
+    @Test
+    public void lockTesterTest() throws InterruptedException {
+        CountDownLatch countDownLatch = new CountDownLatch(10);
+        for (int i = 0; i < 10; i++) {
+            threadPoolTaskExecutor.execute(() -> {
+                lockTester.testLock("imooc");
+                countDownLatch.countDown();
+            });
+        }
+        countDownLatch.await();
     }
 
 

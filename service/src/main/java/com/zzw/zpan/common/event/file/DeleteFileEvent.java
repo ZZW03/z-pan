@@ -19,7 +19,7 @@ public class DeleteFileEvent extends ApplicationEvent {
 
     private List<Long> fileIdList;
 
-    public DeleteFileEvent(Object source, List<Long> fileIdList) {
+    public DeleteFileEvent(Object source) {
         super(source);
         this.fileIdList = fileIdList;
     }

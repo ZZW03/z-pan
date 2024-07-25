@@ -2,6 +2,7 @@ package com.zzw.zpan.initializer;
 
 
 import com.zzw.zpan.config.LocalStorageEngineConfig;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;

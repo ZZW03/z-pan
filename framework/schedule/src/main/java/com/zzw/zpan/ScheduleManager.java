@@ -2,6 +2,7 @@ package com.zzw.zpan;
 
 import com.zzw.zpan.exception.RPanFrameworkException;
 import com.zzw.zpan.utils.UUIDUtil;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
