@@ -28,6 +28,7 @@
         <module>steam</module>
         <module>steam/steam-core</module>
         <module>steam/steam-rocketmq</module>
+        <module>rate-limit</module>
     </modules>
 
     <properties>

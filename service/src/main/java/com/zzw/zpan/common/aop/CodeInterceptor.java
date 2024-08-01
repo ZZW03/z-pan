@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -26,6 +25,8 @@ public class CodeInterceptor {
     @Around("@annotation(needCode)")
     public Object doInterceptor(ProceedingJoinPoint joinPoint,
                                 needCode needCode) throws Throwable {
+
+        System.out.println("进入");
         String string = request.getAttribute("Share-code").toString();
         Long ShareId = ShareTokenUtil.verifyShareToken(string);
         if (ShareId == null){

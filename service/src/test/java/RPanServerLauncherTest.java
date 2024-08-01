@@ -1,9 +1,11 @@
 import com.zzw.zpan.RPanServerLauncher;
+import com.zzw.zpan.common.annotation.needCode;
 import com.zzw.zpan.common.config.PanServerConfig;
 import com.zzw.zpan.common.utils.ShareTokenUtil;
 import com.zzw.zpan.constants.RPanConstants;
 //import com.zzw.zpan.lock.zookeeper.ZooKeeperLockProperties;
 import com.zzw.zpan.core.LockConstants;
+import com.zzw.zpan.limit.MyRedisLimiter;
 import com.zzw.zpan.modules.file.context.QueryFileListContext;
 import com.zzw.zpan.modules.file.entity.RPanUserFile;
 import com.zzw.zpan.modules.file.enums.enums.DelFlagEnum;
@@ -182,6 +184,12 @@ public class RPanServerLauncherTest {
             });
         }
         countDownLatch.await();
+    }
+
+    @Test
+    @MyRedisLimiter(key = "zzw",count = 1,period = 123)
+    public void limitRate(){
+        System.out.println(1);
     }
 
 
