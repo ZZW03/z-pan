@@ -19,5 +19,17 @@ mybatis-plus:
   mapper-locations: classpath:mappers/**/*.xml
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 #
+com:
+  zzw:
+    pan:
+      canal:
+        canal-server-ip: 127.0.0.1
+        canal-server-port: 9933
+        user-name: admin
+        password: admin
+        destination: test
+
+
 

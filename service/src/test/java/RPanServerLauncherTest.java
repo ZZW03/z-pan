@@ -1,5 +1,6 @@
+import com.alibaba.otter.canal.client.CanalConnector;
 import com.zzw.zpan.RPanServerLauncher;
-import com.zzw.zpan.common.annotation.needCode;
+import com.zzw.zpan.ScheduleManager;
 import com.zzw.zpan.common.config.PanServerConfig;
 import com.zzw.zpan.common.utils.ShareTokenUtil;
 import com.zzw.zpan.constants.RPanConstants;
@@ -9,7 +10,6 @@ import com.zzw.zpan.limit.MyRedisLimiter;
 import com.zzw.zpan.modules.file.context.QueryFileListContext;
 import com.zzw.zpan.modules.file.entity.RPanUserFile;
 import com.zzw.zpan.modules.file.enums.enums.DelFlagEnum;
-import com.zzw.zpan.modules.file.mapper.RPanFileMapper;
 import com.zzw.zpan.modules.file.mapper.RPanUserFileMapper;
 import com.zzw.zpan.modules.file.vo.RPanUserFileVO;
 import com.zzw.zpan.modules.share.context.CreateShareUrlContext;
@@ -20,12 +20,14 @@ import com.zzw.zpan.modules.share.service.iShareService;
 import com.zzw.zpan.modules.share.vo.RPanShareUrlListVO;
 import com.zzw.zpan.modules.share.vo.RPanShareUrlVO;
 import com.zzw.zpan.modules.test.controller.LockTester;
+import com.zzw.zpan.modules.test.controller.canalTest;
 import com.zzw.zpan.modules.user.context.UserRegisterContext;
 import com.zzw.zpan.modules.user.mapper.RPanUserMapper;
 import com.zzw.zpan.modules.user.service.IUserService;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.integration.support.locks.LockRegistry;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -55,6 +57,11 @@ public class RPanServerLauncherTest {
     @Resource
     iShareService iShareService;
 
+    @Resource
+    private ScheduleManager manager;
+
+    @Autowired
+    private canalTest scheduleTask;
 
     @Autowired
     private LockRegistry lockRegistry;
@@ -62,8 +69,13 @@ public class RPanServerLauncherTest {
     @Autowired
     private LockTester lockTester;
 
+    @Qualifier("MyTaskExecutor")
     @Autowired
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
+    @Autowired
+    @Qualifier("promotionConnector")
+    private CanalConnector connector;
 
 
 
@@ -190,6 +202,26 @@ public class RPanServerLauncherTest {
     @MyRedisLimiter(key = "zzw",count = 1,period = 123)
     public void limitRate(){
         System.out.println(1);
+    }
+
+    @Test
+    public void CheckCanal(){
+
+        connector.connect();
+
+        System.out.println(connector.checkValid());
+
+        connector.subscribe("rpan.r_pan_user");
+    }
+
+    @Test
+    public void  canal() throws InterruptedException {
+        String cron = "0/5 * * * * ? ";
+
+        String key = manager.startTask(scheduleTask, cron);
+
+        Thread.sleep(1000000);
+
     }
 
 

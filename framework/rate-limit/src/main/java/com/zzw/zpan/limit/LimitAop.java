@@ -45,7 +45,6 @@ public class LimitAop {
                         period);  // 确保 period 是字符串
 
 
-            System.out.println(count);
                 if (count.intValue() > counts){
                     throw new RPanBusinessException();
                 }
